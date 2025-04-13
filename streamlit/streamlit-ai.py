@@ -6,13 +6,7 @@ import whisper
 import openai
 from pydub import AudioSegment
 
-# inference key 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
 
-# HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
-# headers = {"Authorization": f"Bearer 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"}
-
-
-# Load the Hugging Face API key from Streamlit secrets
 HUGGINGFACE_API_KEY = st.secrets["HF_API_TOKEN"]
 
 # Define the Hugging Face inference endpoint
