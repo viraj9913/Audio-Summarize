@@ -7,13 +7,13 @@ import openai
 from pydub import AudioSegment
 
 
-# Load the Hugging Face API key from Streamlit secrets
+# api key required to establish a connection
 HUGGINGFACE_API_KEY = st.secrets["HF_API_TOKEN"]
 
-# Define the Hugging Face inference endpoint
+# open source model
 HUGGINGFACE_API_URL = "https://api-inference.huggingface.co/models/facebook/bart-large-cnn"
 
-# Set up headers with API key
+# setting hugginv face api key to use the model available on cloud
 headers = {
     "Authorization": f"Bearer {HUGGINGFACE_API_KEY}"
 }
@@ -69,7 +69,7 @@ def summarizetext(filepath):
 def audiotxt(file):
     model = whisper.load_model("small")
 
-    # Convert uploaded file to a format Whisper understands
+    # converting audio to text using the audiosegment
     audio = AudioSegment.from_file(file)
     audio.export("temp.wav", format="wav")  # Save to a temporary file
 
@@ -79,13 +79,14 @@ def audiotxt(file):
 # /\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
 #  void main()
 
-st.title("AI Podcast Summarizer (Mistral via Ollama)")
+st.title("AI Podcast Summarizer")
 
 user_input = st.text_area("Paste transcript or summary chunk")
 
 st.header('Or Upload a wav audio file')
 
-file=st.file_uploader('Choose a file (m4a).',type=['m4a'])
+# file=st.file_uploader('Choose a file (m4a).',type=['m4a'])
+file = st.file_uploader('Choose an audio file', type=['m4a', 'mp3', 'wav'])
 
 # if user selects file to upload
 if file is not None:
@@ -130,15 +131,3 @@ if st.button("Summarize"):
                 st.error("Text is too short or malformed for summarization. Try pasting a longer transcript.")
 
     
-
-
-
-
-# for mistral model
-# took 1 min and 40 seconds to complete the audio
-# for text took 1 min and 30 seconds
-
-
-# for wizardlm2
-# for audio 2 min and 34 seconds
-# for text took 1 min 
