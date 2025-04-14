@@ -3,3 +3,4 @@ whisper
 openai
 pydub
 ffmpeg
+openai-whisper
