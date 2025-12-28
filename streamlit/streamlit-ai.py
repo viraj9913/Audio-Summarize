@@ -77,7 +77,6 @@ def audiotxt(file):
     return result["text"]
 
 # /\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
-#  void main()
 
 st.title("AI Podcast Summarizer")
 
@@ -131,3 +130,4 @@ if st.button("Summarize"):
                 st.error("Text is too short or malformed for summarization. Try pasting a longer transcript.")
 
     
+
